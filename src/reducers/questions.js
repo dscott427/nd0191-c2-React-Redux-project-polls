@@ -1,13 +1,13 @@
-import { RECEIVE_TWEETS, TOGGLE_TWEET, ADD_TWEET } from "../actions/tweets";
+import { RECEIVE_QUESTIONS, ADD_QUESTION, ADD_QUESTION_ANSWER} from "../actions/questions";
 
-export default function tweets(state = {}, action) {
+export default function questions(state = {}, action) {
   switch (action.type) {
-    case RECEIVE_TWEETS:
+    case RECEIVE_QUESTIONS:
       return {
         ...state,
-        ...action.tweets,
+        ...action.questions,
       };
-    case TOGGLE_TWEET:
+    case ADD_QUESTION:
       return {
         ...state,
         [action.id]: {
@@ -20,7 +20,7 @@ export default function tweets(state = {}, action) {
               : state[action.id].likes.concat([action.authedUser]),
         },
       };
-    case ADD_TWEET:
+    case ADD_QUESTION_ANSWER:
       const { tweet } = action;
 
       let replyingTo = {};

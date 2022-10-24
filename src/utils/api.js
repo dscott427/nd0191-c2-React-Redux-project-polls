@@ -1,6 +1,6 @@
 import {
   _getUsers,
-  _get_getQuestions,
+  _getQuestions,
   _saveQuestion,
   _saveQuestionAnswer,
 } from './_DATA.js'
@@ -11,14 +11,14 @@ export function getInitialData () {
     _getQuestions(),
   ]).then(([users, questions]) => ({
     users,
-    tweets,
+    questions,
   }))
 }
 
-export function _saveQuestion (info) {
-  return _saveQuestion(info)
+export function saveQuestion (question) {
+  return _saveQuestion(question)
 }
 
-export function _saveQuestionAnser (info) {
-  return _saveQuestionAnswer(info)
+export function saveQuestionAnser (answer) {
+  return _saveQuestionAnswer(answer)
 }

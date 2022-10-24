@@ -3,12 +3,12 @@ import { formatQuestion, formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
 
 
-const Leaderboard = (props) => {
+const QuestionDetail = (props) => {
 
 
 return (
     <div>
-        Leaderboard
+        Question Detail
     </div>
 )};
 
@@ -16,4 +16,4 @@ const mapStateToProps = ({ authedUser }) => ({
     loading: authedUser === null,
   });
 
-export default connect(mapStateToProps)(Leaderboard);
+export default connect(mapStateToProps)(QuestionDetail);

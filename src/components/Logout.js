@@ -3,7 +3,7 @@ import { formatQuestion, formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
 
 
-const Leaderboard = (props) => {
+const Logout = (props) => {
 
 
 return (
@@ -16,4 +16,4 @@ const mapStateToProps = ({ authedUser }) => ({
     loading: authedUser === null,
   });
 
-export default connect(mapStateToProps)(Leaderboard);
+export default connect(mapStateToProps)(Logout);

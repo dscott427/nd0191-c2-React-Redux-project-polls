@@ -5,7 +5,7 @@ export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
 export const ADD_QUESTION_ANSWER = "ADD_QUESTION_ANSWER";
 
-function addQuestion(tweet) {
+function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,
@@ -13,17 +13,17 @@ function addQuestion(tweet) {
 }
 
 export function handleAddQuestion(question) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { authedUser } = getState();
 
     dispatch(showLoading());
 
-    return saveQuestion({
+    const question_1 = await saveQuestion({
       question,
       author: authedUser,
-    })
-      .then((question) => dispatch(addQuestion(question)))
-      .then(() => dispatch(hideLoading()));
+    });
+    dispatch(addQuestion(question_1));
+    return dispatch(hideLoading());
   };
 }
 
@@ -43,7 +43,7 @@ function addQuestionAnswer({ id, authedUser, answer }) {
   };
 }
 
-export function handleAddQuestionAnswer(id, answer) {
+export function handleAddQuestionAnswer(id, answer, getState) {
   return (dispatch) => {
     const { authedUser } = getState();
     dispatch(addQuestionAnswer(id, authedUser, answer));
