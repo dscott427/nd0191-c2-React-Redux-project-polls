@@ -14,7 +14,7 @@ import { Routes, Route } from "react-router-dom";
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
-  }, [props]);
+  }, []);
 
   return (
     <Fragment>
@@ -24,7 +24,7 @@ const App = (props) => {
         {props.loading === true ? null : (
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
-            <Route path="/question/new/:id" element={<QuestionCreate />} />
+            <Route path="/question/new" element={<QuestionCreate />} />
             <Route path="/question/answer" element={<Question />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/login" element={<Login />} />

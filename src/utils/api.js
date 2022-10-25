@@ -19,6 +19,6 @@ export function saveQuestion (question) {
   return _saveQuestion(question)
 }
 
-export function saveQuestionAnser (answer) {
+export function saveQuestionAnswer (answer) {
   return _saveQuestionAnswer(answer)
 }

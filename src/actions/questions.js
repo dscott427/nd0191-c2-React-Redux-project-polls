@@ -18,7 +18,7 @@ export function handleAddQuestion(question) {
 
     dispatch(showLoading());
 
-    const question_1 = await saveQuestion({
+    const question_1 = saveQuestion({
       question,
       author: authedUser,
     });
@@ -46,12 +46,13 @@ function addQuestionAnswer({ id, authedUser, answer }) {
 export function handleAddQuestionAnswer(id, answer, getState) {
   return (dispatch) => {
     const { authedUser } = getState();
-    dispatch(addQuestionAnswer(id, authedUser, answer));
 
-  /*   return saveLikeToggle(info).catch((e) => {
-      console.warn("Error in handleToggleTweet: ", e);
-      dispatch(toggleTweet(info));
-      alert("The was an error liking the tweet. Try again.");
-    }); */
+    return saveQuestionAnswer({
+      id,
+      author: authedUser,
+      answer,
+    })
+      .then((questionAnswer) => dispatch(addQuestionAnswer(questionAnswer)))
+      .then(() => dispatch(hideLoading()));
   };
 }
