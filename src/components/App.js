@@ -26,6 +26,7 @@ const App = (props) => {
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/question/new" element={<QuestionCreate />} />
             <Route path="/question/answer" element={<Question />} />
+            <Route path="/question/:id" element={<Question />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
