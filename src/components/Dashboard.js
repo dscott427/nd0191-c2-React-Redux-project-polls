@@ -4,7 +4,7 @@ import Questions from "./Questions";
 const Dashboard = (props) => {
   return (
     <div>
-      <Questions/>
+      <Questions key="1"/>      
     </div>
   );
 };

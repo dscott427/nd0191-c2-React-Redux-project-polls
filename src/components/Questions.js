@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import { formatQuestion, formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
-
+import QuestionSummary from "./QuestionSummary";
 
 const Questions = (props) => {
 
@@ -11,30 +11,21 @@ const Questions = (props) => {
     const answerKeys = Object.keys(props.users[authedUser].answers);
     const doneKeys = questionKeys.filter(q => !answerKeys.includes(q));
 
+    const border = '1px solid black';
 
     return (
         <div>
-            <div>
+            <div className='center'>
                 <h3 className="center">New Questions</h3>
-                <ul>
-                    {doneKeys.map((key) => (
-                        <li key={key}>
-                            {key}
-                        </li>
-                    ))}
-
-                </ul>
+                {answerKeys.map((key) => (
+                    <QuestionSummary key={key} questionId={key} question={props.questions[key]} />
+                ))}               
             </div>
-            <div>
+            <div className='center'>
                 <h3 className="center">Done</h3>
-                <ul>
-                    {answerKeys.map((key) => (
-                        <li key={key}>
-                            {key}
-                        </li>
-                    ))}
-
-                </ul>
+                {doneKeys.map((key) => (
+                    <QuestionSummary key={key} questionId={key} question={props.questions[key]} />
+                ))}               
             </div>
         </div >
     )
