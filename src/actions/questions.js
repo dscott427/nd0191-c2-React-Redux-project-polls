@@ -1,4 +1,4 @@
-import { saveQuestion, saveQuestionAnswer } from "../utils/api";
+import { saveQuestion, saveQuestionAnswer, getState } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
@@ -18,12 +18,13 @@ export function handleAddQuestion(question) {
 
     dispatch(showLoading());
 
-    const question_1 = saveQuestion({
-      question,
+    return saveQuestion({
+      optionOneText: question.textOne,
+      optionTwoText: question.textTwo,
       author: authedUser,
-    });
-    dispatch(addQuestion(question_1));
-    return dispatch(hideLoading());
+    })
+    .then((question) => dispatch(addQuestion(question)))
+    .then(() => dispatch(hideLoading()));
   };
 }
 
@@ -34,25 +35,37 @@ export function receiveQuestions(questions) {
   };
 }
 
-function addQuestionAnswer({ id, authedUser, answer }) {
+function addQuestionAnswer({ qid, authedUser, answer }) {
   return {
     type: ADD_QUESTION_ANSWER,
-    id,
+    id: qid,
     authedUser,
     answer,
   };
 }
 
-export function handleAddQuestionAnswer(id, answer, getState) {
-  return (dispatch) => {
+
+
+export function handleAddQuestionAnswer(question) {
+
+  console.log("handleAddQuestionAnswer Action");
+  return async (dispatch,getState) => {
     const { authedUser } = getState();
 
-    return saveQuestionAnswer({
-      id,
-      author: authedUser,
-      answer,
+    let questionAnswer = {
+      qid: question.id,
+      authedUser: question.authedUser,
+      answer: question.option,
+    }
+
+    return await saveQuestionAnswer({
+      qid: question.id,
+      authedUser: question.authedUser,
+      answer: question.option,
     })
-      .then((questionAnswer) => dispatch(addQuestionAnswer(questionAnswer)))
-      .then(() => dispatch(hideLoading()));
+      .then(() => dispatch(addQuestionAnswer(questionAnswer)))
+      .then(() => dispatch(hideLoading()))
+      .then(console.log("handleAddQuestionAnswer Action Dispatch"))
+      .catch("Error");
   };
 }

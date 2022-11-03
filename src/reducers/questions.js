@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTIONS, ADD_QUESTION, ADD_QUESTION_ANSWER} from "../actions/questions";
+import { RECEIVE_QUESTIONS, ADD_QUESTION, ADD_QUESTION_ANSWER } from "../actions/questions";
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -10,33 +10,24 @@ export default function questions(state = {}, action) {
     case ADD_QUESTION:
       return {
         ...state,
-        [action.id]: {
-          ...state[action.id],
-          likes:
-            action.hasLiked === true
-              ? state[action.id].likes.filter(
-                  (uid) => uid !== action.authedUser
-                )
-              : state[action.id].likes.concat([action.authedUser]),
-        },
+          [action.question.id]: action.question,        
       };
     case ADD_QUESTION_ANSWER:
-      const { tweet } = action;
 
-      let replyingTo = {};
-      if (tweet.replyingTo !== null) {
-        replyingTo = {
-          [tweet.replyingTo]: {
-            ...state[tweet.replyingTo],
-            replies: state[tweet.replyingTo].replies.concat([tweet.id]),
-          },
-        };
-      }
+      console.log("ADD_QUESTION_ANSWER Reducer");
 
       return {
         ...state,
-        [action.tweet.id]: action.tweet,
-        ...replyingTo,
+        [action.id]: {
+          ...state[action.id],
+          [action.answer]: {
+            ...state[action.id][action.answer],
+            votes:
+              !state[action.id][action.answer].votes.includes(action.authedUser)
+                ? state[action.id][action.answer].votes.concat(action.authedUser)
+                : state[action.id][action.answer].votes
+          }
+        }
       };
     default:
       return state;

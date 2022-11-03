@@ -19,7 +19,6 @@ let users = {
     avatarURL: null,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
@@ -122,7 +121,7 @@ let questions = {
       text: 'deploy to production once every two weeks',
     },
     optionTwo: {
-      votes: ['tylermcginnis'],
+      votes: [],
       text: 'deploy to production once every month'
     }
   },
@@ -178,7 +177,7 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer ({ qid, authedUser, answer }) {
   return new Promise((resolve, reject) => {
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");

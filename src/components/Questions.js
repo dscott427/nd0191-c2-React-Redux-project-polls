@@ -8,8 +8,8 @@ const Questions = (props) => {
 
     const authedUser = props.authedUser;
     const questionKeys = Object.keys(props.questions);
-    const answerKeys = Object.keys(props.users[authedUser].answers);
-    const doneKeys = questionKeys.filter(q => !answerKeys.includes(q));
+    const doneKeys = Object.keys(props.users[authedUser].answers);
+    const answerKeys = questionKeys.filter(q => !doneKeys.includes(q));
 
     const border = '1px solid black';
 

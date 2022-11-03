@@ -28,6 +28,17 @@ a {
   position: relative;
 }
 
+.buttons {
+  width: 400px;
+  margin: 0 auto;
+  display: inline;}
+  
+  .action_btn {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: inline;}
+
 .btn:hover {
   border-color: rgba(0, 0, 0, 0.5);
   text-decoration: none;

@@ -19,6 +19,7 @@ export function saveQuestion (question) {
   return _saveQuestion(question)
 }
 
-export function saveQuestionAnswer (answer) {
-  return _saveQuestionAnswer(answer)
+export function saveQuestionAnswer (question) {
+  console.log("saveQuestionAnswer api")
+  return _saveQuestionAnswer(question)
 }
