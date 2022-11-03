@@ -10,10 +10,11 @@ export function receiveUsers(users) {
   };
 }
 
-export function addUserPoll(users) {
+export function addUserPoll({ id, author}) {
   return {
     type: ADD_USER_POLL,
-    users,
+    id,
+    authedUser: author,
   };
 }
 
@@ -29,7 +30,7 @@ export function addUserAnswer({ id, authedUser, answer }) {
 export function handleAddUserAnswer(question) {
 
   console.log("handleAddUserAnswer Action");
-  return async (dispatch,getState) => {
+  return async (dispatch, getState) => {
     const { authedUser } = getState();
 
     let userAnswer = {
@@ -39,5 +40,20 @@ export function handleAddUserAnswer(question) {
     }
 
     dispatch(addUserAnswer(userAnswer));
+  }
+}
+
+export function handleAddUserPoll(question) {
+
+  console.log("handleAddUserPoll Action");
+  return async (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    // let userPoll = {
+    //   id: question.id,
+    //   authedUser: question.authedUser,
+    // }
+
+    dispatch(addUserPoll(question));
   }
 }

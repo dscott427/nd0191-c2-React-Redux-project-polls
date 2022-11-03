@@ -1,5 +1,6 @@
 import { saveQuestion, saveQuestionAnswer, getState } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
+import { handleAddUserPoll } from "../actions/users";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -23,7 +24,11 @@ export function handleAddQuestion(question) {
       optionTwoText: question.textTwo,
       author: authedUser,
     })
-    .then((question) => dispatch(addQuestion(question)))
+  //  .then((returnedValue) => console.log(returnedValue))
+    .then((formattedQuestion) => 
+    { dispatch(addQuestion(question));
+      dispatch(handleAddUserPoll(formattedQuestion));
+    })
     .then(() => dispatch(hideLoading()));
   };
 }

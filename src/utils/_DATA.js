@@ -164,9 +164,24 @@ export function _saveQuestion (question) {
     if (!question.optionOneText || !question.optionTwoText || !question.author) {
       reject("Please provide optionOneText, optionTwoText, and author");
     }
-
+    
     const formattedQuestion = formatQuestion(question)
+
+    const {id, author} = formattedQuestion;
+
     setTimeout(() => {
+
+      users = {
+        ...users,
+        [author]: {
+          ...users[author],
+          questions:
+            !users[author].questions.includes(id)
+              ? users[author].questions.concat(id)
+              : users[author].questions
+        },
+      }
+
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion

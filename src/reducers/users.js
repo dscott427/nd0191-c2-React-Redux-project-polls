@@ -14,8 +14,8 @@ export default function users(state = {}, action) {
           ...state[action.authedUser],
           questions:
             !state[action.authedUser].questions.includes(action.id)
-              ? state[action.author].questions.concat(action.id)
-              : state[action.author].questions
+              ? state[action.authedUser].questions.concat(action.id)
+              : state[action.authedUser].questions
         },
       };
     case ADD_USER_ANSWER:
