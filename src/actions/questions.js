@@ -26,7 +26,7 @@ export function handleAddQuestion(question) {
     })
   //  .then((returnedValue) => console.log(returnedValue))
     .then((formattedQuestion) => 
-    { dispatch(addQuestion(question));
+    { dispatch(addQuestion(formattedQuestion));
       dispatch(handleAddUserPoll(formattedQuestion));
     })
     .then(() => dispatch(hideLoading()));

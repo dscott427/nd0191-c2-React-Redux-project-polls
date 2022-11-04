@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../utils/helpers";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import {handleAddQuestionAnswer} from "../actions/questions";
-import {handleAddUserAnswer} from "../actions/users";
+import { handleAddQuestionAnswer } from "../actions/questions";
+import { handleAddUserAnswer } from "../actions/users";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
@@ -18,30 +18,36 @@ const withRouter = (Component) => {
 
 const Question = (props) => {
 
+    let navigate = useNavigate();
+
     const handleChoice = (e, option) => {
         e.preventDefault();
 
         console.log("handleQuestionAnswer option: " + option)
-    
+
         const { dispatch, tweet, authedUser } = props;
-    
+
         dispatch(
-          handleAddQuestionAnswer({
-            id: props.question.id,
-            authedUser,
-            option
-          })
-          
-        );
+            handleAddQuestionAnswer({
+                id: props.question.id,
+                authedUser,
+                option
+            })
+
+        ).then(
 
         dispatch(
             handleAddUserAnswer({
-              id: props.question.id,
-              authedUser,
-              option
+                id: props.question.id,
+                authedUser,
+                option
             })
-          );
-      };
+        ).then(
+            navigate('/')
+            ));
+
+        
+    };
 
     const border = '1px solid black';
 
