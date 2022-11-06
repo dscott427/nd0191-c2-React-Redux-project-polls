@@ -16,6 +16,8 @@ const App = (props) => {
     props.dispatch(handleInitialData());
   }, []);
 
+
+
   return (
     <Fragment>
       <LoadingBar />
@@ -23,13 +25,14 @@ const App = (props) => {
         <Nav />
         {props.loading === true ? null : (
           <Routes>
-            <Route path="/" exact element={<Dashboard />} />
+            <Route path="/" exact element={<Login/>} />
             <Route path="/question/new" element={<QuestionCreate />} />
             <Route path="/question/answer" element={<Question />} />
             <Route path="/question/:id" element={<Question />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route 
+            path="/logout" onClick="handleLogout" />
           </Routes>
         )}
       </div>
@@ -38,7 +41,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = ({ authedUser }) => ({
-  loading: authedUser === null,
+ // loading: authedUser === null,
 });
 
 export default connect(mapStateToProps)(App);
