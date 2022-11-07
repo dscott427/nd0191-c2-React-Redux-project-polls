@@ -14,12 +14,15 @@ const QuestionSummary = (props, ownProps) => {
     navigate(`/question/${id}`);
   };
 
+  console.log("avatarUrl: " + props.users[question.author].avatarUrl)
+
 
   return (
     <div className='center' style={{ border: border }}>
       <h3>{question.author}</h3>
+      <img src={props.users[question.author].avatarURL} alt={`Avatar of ${question.author}`} className="avatar" />
       <h2>{formatDate(props.questions[props.questionId].timestamp)}</h2>
-      <Link to={`/question/${props.questionId}`}>Question Link</Link>
+    {/* {}  <Link to={`/question/${props.questionId}`}>Question Link</Link> */}
       <button
       onClick={(e) => toQuestion(e, props.questionId)}
       >
@@ -28,8 +31,9 @@ const QuestionSummary = (props, ownProps) => {
   )
 };
 
-const mapStateToProps = ({ questions }) => ({
+const mapStateToProps = ({ questions, users }) => ({
   questions,
+  users
 });
 
 export default connect(mapStateToProps)(QuestionSummary);

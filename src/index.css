@@ -87,6 +87,12 @@ li {
   text-decoration: none;
 }
 
+.avatarsmall {
+  height: 25px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
 .avatar {
   height: 50px;
   border-radius: 25px;

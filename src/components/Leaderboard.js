@@ -12,9 +12,15 @@ const Leaderboard = (props) => {
             fullName: props.users[key].name,
             userName: key,
             answers: Object.keys(props.users[key].answers).length,
-            created: Object.keys(props.users[key].questions).length
+            created: Object.keys(props.users[key].questions).length,
+            avatarURL: props.users[key].avatarURL,
+            total: Object.keys(props.users[key].answers).length + Object.keys(props.users[key].questions).length
         }
     });
+
+    users.sort(function(b, a){return a.total - b.total});
+
+
 
     return (
         <div>
@@ -28,8 +34,12 @@ const Leaderboard = (props) => {
                     {users.map((user) => {
                         return (
                             <tr key={user.userName}>
+                              {/*   <td>
+                                <img src={user.avatarURL} alt={`Avatar of ${user.userName}`} className="avatar" />
+                                </td> */}
                                 <td>
                                     <div>
+                                    <img src={user.avatarURL} alt={`Avatar of ${user.userName}`} className="avatar" />
                                         {user.fullName}
                                     </div>
                                     <div>

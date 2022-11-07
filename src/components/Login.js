@@ -53,7 +53,7 @@ const Login = (props) => {
 
 
     return (
-        <div>
+        <div data-testid="login-component">
             <h3 className="center">Log In</h3>
             <form onSubmit={handleSubmit}>
                 <div>

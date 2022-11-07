@@ -38,7 +38,7 @@ const QuestionCreate = ({dispatch}) => {
 
     return (
         <div>
-            <h3 className="center">Compose new Tweet</h3>
+            <h3 className="center">New Poll</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     Option One
@@ -62,9 +62,11 @@ const QuestionCreate = ({dispatch}) => {
                     maxLength={280}
                     onChange={handleTextTwoChange}
                 />
+                <div>
                 <button className="btn" type="submit" disabled={textOne === "" || textTwo === ""}>
                     Submit
                 </button>
+                </div>
             </form>
         </div>
     );

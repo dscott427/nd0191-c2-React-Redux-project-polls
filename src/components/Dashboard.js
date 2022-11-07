@@ -3,7 +3,7 @@ import Questions from "./Questions";
 
 const Dashboard = (props) => {
   return (
-    <div>
+    <div data-testid="dashboard-component">
       <Questions key="1"/>      
     </div>
   );
