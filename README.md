@@ -10,7 +10,7 @@ Functionality:
 * Dashboard - default after login
 * Add - Create a new poll
 * Question - Answer a poll
-* Leaderboard = Show answered and created metrics for each use and rank
+* Leaderboard - Show answered and created metrics for each use and rank
 
 Please use the following commands to install, run, and test the project
 * npm install - update npm packages

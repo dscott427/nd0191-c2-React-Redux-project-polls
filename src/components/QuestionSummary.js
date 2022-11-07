@@ -22,11 +22,12 @@ const QuestionSummary = (props, ownProps) => {
       <h3>{question.author}</h3>
       <img src={props.users[question.author].avatarURL} alt={`Avatar of ${question.author}`} className="avatar" />
       <h2>{formatDate(props.questions[props.questionId].timestamp)}</h2>
-    {/* {}  <Link to={`/question/${props.questionId}`}>Question Link</Link> */}
-      <button
-      onClick={(e) => toQuestion(e, props.questionId)}
-      >
-        Show</button>
+      <div>
+        <button
+          onClick={(e) => toQuestion(e, props.questionId)}
+        >
+          Show</button>
+      </div>
     </div>
   )
 };

@@ -26,8 +26,8 @@ const App = (props) => {
         {props.loading === true ? null : (
           <Routes>
             <Route path="/" exact element={<Login/>} />
-            <Route path="/question/new" element={<QuestionCreate />} />
-            <Route path="/question/answer" element={<Question />} />
+            <Route path="/add" element={<QuestionCreate />} />
+            <Route path="/answer" element={<Question />} />
             <Route path="/question/:id" element={<Question />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/dashboard" element={<Dashboard />} />

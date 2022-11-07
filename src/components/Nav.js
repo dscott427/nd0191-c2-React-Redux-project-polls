@@ -27,7 +27,7 @@ const Nav = (props) => {
         </li>
 
         <li>
-          <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/question/new">New</Link>
+          <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/add">New</Link>
         </li>
         <li>
           <Link onClick={handleLogout} to="/">{props.authedUser === null ? 'Login' : 'Logout'}
