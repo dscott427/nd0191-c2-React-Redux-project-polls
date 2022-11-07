@@ -9,21 +9,20 @@ const Login = (props) => {
 
     let navigate = useNavigate();
 
-    const { dispatch, authedUser } = props;
+    const { dispatch, authedUser, users } = props;
 
     useEffect(() => {
-        if(authedUser !== null)
-        {
+        if (authedUser !== null) {
             navigate("/dashboard");
         }
-      }, []);
-    
+    }, []);
+
     const [textUser, setTextUser] = useState("");
     const [textPassword, setTextPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleTextUserChange = (e) => {
         const text = e.target.value;
-
         setTextUser(text);
     };
 
@@ -38,12 +37,17 @@ const Login = (props) => {
 
         const question = { textUser, textPassword };
 
-        dispatch(setAuthedUser(textUser));
+        if (users[textUser] && users[textUser].password === textPassword) {
+            dispatch(setAuthedUser(textUser));
+
+            navigate("/dashboard");
+        }
+        else{
+            setErrorMessage("Invalid User or Password");
+        }
 
         setTextUser("");
         setTextPassword("");
-
-        navigate("/dashboard");
 
     }
 
@@ -74,9 +78,14 @@ const Login = (props) => {
                     maxLength={280}
                     onChange={handleTextPasswordChange}
                 />
-                <button className="btn" type="submit" disabled={textUser === "" || textPassword === ""}>
-                    Submit
-                </button>
+                <div>
+                    <button className="btn" type="submit" disabled={textUser === "" || textPassword === ""}>
+                        Submit
+                    </button>
+                </div>
+                <div>
+                   {errorMessage}
+                </div>
             </form>
         </div>
     );
@@ -84,7 +93,7 @@ const Login = (props) => {
 
 
 const mapStateToProps = ({ authedUser, users }) => ({
- //   loading: authedUser === null,
+    //   loading: authedUser === null,
     users,
     authedUser
 });
