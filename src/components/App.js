@@ -5,11 +5,12 @@ import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading-bar";
 import Question from "./Question";
 import QuestionCreate from "./QuestionCreate";
+import NotFound from "./NotFound";
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
 import Nav from "./Nav";
 import { Routes, Route, Navigate } from "react-router-dom";
-import RequireAuth  from "../components/RequireAuth";
+import RequireAuth from "../components/RequireAuth";
 import { useNavigate, Link } from "react-router-dom";
 
 const App = (props) => {
@@ -74,7 +75,14 @@ const App = (props) => {
               }
             />
             <Route
-              path="/logout" onClick="handleLogout" />
+              path="/logout" onClick="handleLogout"
+            />
+            <Route path='*'
+              element={
+                <RequireAuth>
+                  <NotFound />
+                </RequireAuth>
+              } />
           </Routes>
         )}
       </div>
