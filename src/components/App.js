@@ -8,14 +8,16 @@ import QuestionCreate from "./QuestionCreate";
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
 import Nav from "./Nav";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import RequireAuth  from "../components/RequireAuth";
+import { useNavigate, Link } from "react-router-dom";
 
 const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
 
-
+  const navigate = useNavigate();
 
   return (
     <Fragment>
@@ -24,14 +26,55 @@ const App = (props) => {
         <Nav />
         {props.loading === true ? null : (
           <Routes>
-            <Route path="/" exact element={<Login/>} />
-            <Route path="/add" element={<QuestionCreate />} />
-            <Route path="/answer" element={<Question />} />
-            <Route path="/question/:id" element={<Question />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route 
-            path="/logout" onClick="handleLogout" />
+            <Route path="/" exact
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+            <Route path="/login"
+              element={
+                <Login />
+              }
+            />
+            <Route path="/add"
+              element={
+                <RequireAuth>
+                  <QuestionCreate />
+                </RequireAuth>
+              }
+            />
+            <Route path="/answer"
+              element={
+                <RequireAuth>
+                  <Question />
+                </RequireAuth>
+              }
+            />
+            <Route path="/question/:id"
+              element={
+                <RequireAuth>
+                  <Question />
+                </RequireAuth>
+              }
+            />
+            <Route path="/leaderboard"
+              element={
+                <RequireAuth>
+                  <Leaderboard />
+                </RequireAuth>
+              }
+            />
+            <Route path="/dashboard"
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/logout" onClick="handleLogout" />
           </Routes>
         )}
       </div>
@@ -40,7 +83,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = ({ authedUser }) => ({
- authedUser
+  authedUser
 });
 
 export default connect(mapStateToProps)(App);

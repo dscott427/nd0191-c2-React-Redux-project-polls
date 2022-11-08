@@ -1,10 +1,13 @@
 import { useNavigate, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
+import { useAuth } from "../utils/useAuth";
 
 const Nav = (props) => {
 
   const { dispatch, authedUser, users } = props;
+
+  const { authed, logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -12,6 +15,7 @@ const Nav = (props) => {
     e.preventDefault();
     if (authedUser !== null) {
       dispatch(setAuthedUser(null));
+      logout();
       navigate("/");
     }
   }
@@ -29,7 +33,10 @@ const Nav = (props) => {
           <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/add">New</Link>
         </li>
         <li>
-          <Link onClick={handleLogout} to="/">{props.authedUser === null ? 'Login' : 'Logout'}
+          <Link
+            onClick={handleLogout}
+            to="/">{
+              props.authedUser === null ? 'Login' : 'Logout'}
           </Link>
         </li>
         <li>

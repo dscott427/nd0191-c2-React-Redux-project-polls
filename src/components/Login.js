@@ -2,19 +2,16 @@ import { connect } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 const Login = (props) => {
 
     let navigate = useNavigate();
 
-    const { dispatch, authedUser, users } = props;
+    const { state } = useLocation();
 
-    useEffect(() => {
-        if (authedUser !== null) {
-            navigate("/dashboard");
-        }
-    }, []);
+    const { dispatch, users } = props;
 
     const [textUser, setTextUser] = useState("");
     const [textPassword, setTextPassword] = useState("");
@@ -31,15 +28,15 @@ const Login = (props) => {
         setTextPassword(text);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const question = { textUser, textPassword };
-
         if (users[textUser] && users[textUser].password === textPassword) {
+            
             dispatch(setAuthedUser(textUser));
 
-            navigate("/dashboard");
+            navigate(state?.path || "/dashboard");
+
         }
         else{
             setErrorMessage("Invalid User or Password");

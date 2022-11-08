@@ -17,6 +17,11 @@ Please use the following commands to install, run, and test the project
 * npm start - Run the application
 * npm run test - Run the tests
 
+# Author
+Doug Scott
+Sr. Software Engineer
+CarMax
+
 ## Data
 
 There are two types of objects stored in our database:

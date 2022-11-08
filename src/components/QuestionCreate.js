@@ -37,7 +37,8 @@ const QuestionCreate = ({dispatch}) => {
 
     return (
         <div>
-            <h3 className="center">New Poll</h3>
+            <h2 className="center">Would You Rather</h2>
+            <h3 className="center">Create your own poll</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     Option One
