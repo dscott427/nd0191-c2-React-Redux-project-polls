@@ -13,7 +13,19 @@ describe('questions', () => {
     expect(result.id).toBeDefined();
   });
 
-  it("Add question fails foe missing data", async () => {
+  it('Add new question answer and verify', async () => {
+    var result = await _saveQuestionAnswer(
+      {
+        qid: "xj352vofupe1dqz9emx13r",
+        answer: "optionTwo",
+        authedUser: "tylermcginnis"
+
+      });
+   expect(result).toEqual(true);
+  });
+  
+
+  it("Add question fails for missing data", async () => {
 
     expect.assertions(1)
 
@@ -26,6 +38,30 @@ describe('questions', () => {
             optionOneText: "optionone",
             optionTwoText: "optiontwo",
 
+          })
+      }
+      catch (exception) {
+        error = exception;
+        expect(error).toEqual("Please provide optionOneText, optionTwoText, and author");
+      }
+    }
+
+    getBadResults();
+
+  })
+
+  it("Add question fails for missing data", async () => {
+
+    expect.assertions(1)
+
+    let response = null;
+    let error = null;
+    let getBadResults = async () => {
+      try {
+        await _saveQuestionAnswer(
+          {
+            qid: "xj352vofupe1dqz9emx13r",
+            answer: "optionTwo",    
           })
       }
       catch (exception) {
