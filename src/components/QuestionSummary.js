@@ -11,7 +11,7 @@ const QuestionSummary = (props, ownProps) => {
   const toQuestion = (e, id) => {
     e.preventDefault();
 
-    navigate(`/question/${id}`);
+    navigate(`/questions/${id}`);
   };
 
   return (

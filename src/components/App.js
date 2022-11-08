@@ -53,7 +53,7 @@ const App = (props) => {
                 </RequireAuth>
               }
             />
-            <Route path="/question/:id"
+            <Route path="/questions/:id"
               element={
                 <RequireAuth>
                   <Question />
