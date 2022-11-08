@@ -49,11 +49,6 @@ export function handleAddUserPoll(question) {
   return async (dispatch, getState) => {
     const { authedUser } = getState();
 
-    // let userPoll = {
-    //   id: question.id,
-    //   authedUser: question.authedUser,
-    // }
-
     dispatch(addUserPoll(question));
   }
 }

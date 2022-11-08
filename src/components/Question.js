@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/questions";
 import { handleAddUserAnswer } from "../actions/users";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {

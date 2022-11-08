@@ -25,7 +25,6 @@ const Nav = (props) => {
         <li>
           <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/leaderboard">Leaderboard</Link>
         </li>
-
         <li>
           <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/add">New</Link>
         </li>

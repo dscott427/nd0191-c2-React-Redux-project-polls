@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import { useState, useEffect } from "react";
@@ -59,7 +58,7 @@ const Login = (props) => {
                 <div>
                     User
                 </div>
-                <input type="text"
+                <input data-testid="login-user-name" type="text"
                     placeholder="User"
                     id="optionOne"
                     value={textUser}
@@ -70,7 +69,7 @@ const Login = (props) => {
                 <div>
                     Password
                 </div>
-                <input type="text"
+                <input data-testid="login-password" type="text"
                     placeholder="Password"
                     id="optionTwo"
                     value={textPassword}
@@ -79,7 +78,7 @@ const Login = (props) => {
                     onChange={handleTextPasswordChange}
                 />
                 <div>
-                    <button className="btn" type="submit" disabled={textUser === "" || textPassword === ""}>
+                    <button data-testid="login-submit-button" className="btn" type="submit" disabled={textUser === "" || textPassword === ""}>
                         Submit
                     </button>
                 </div>

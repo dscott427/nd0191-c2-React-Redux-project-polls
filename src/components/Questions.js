@@ -1,7 +1,4 @@
 import { connect } from "react-redux";
-import { useEffect } from "react";
-import { formatQuestion, formatDate } from "../utils/helpers";
-import { useNavigate, Link } from "react-router-dom";
 import QuestionSummary from "./QuestionSummary";
 
 const Questions = (props) => {
@@ -27,9 +24,9 @@ const Questions = (props) => {
         }
     });
 
-    newQuestions.sort(function(b, a){return a.timestamp - b.timestamp});
+    newQuestions.sort(function (b, a) { return a.timestamp - b.timestamp });
 
-    doneQuestions.sort(function(b, a){return a.timestamp - b.timestamp});
+    doneQuestions.sort(function (b, a) { return a.timestamp - b.timestamp });
 
     return (
         <div>
@@ -37,13 +34,13 @@ const Questions = (props) => {
                 <h3 className="center">New Questions</h3>
                 {newQuestions.map((question) => (
                     <QuestionSummary key={question.id} questionId={question.id} question={props.questions[question.id]} />
-                ))}               
+                ))}
             </div>
             <div className='center'>
                 <h3 className="center">Done</h3>
                 {doneQuestions.map((question) => (
                     <QuestionSummary key={question.id} questionId={question.id} question={props.questions[question.id]} />
-                ))}               
+                ))}
             </div>
         </div >
     )

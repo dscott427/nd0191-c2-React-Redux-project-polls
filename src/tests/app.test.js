@@ -2,15 +2,13 @@ import React from "react";
 import { render } from "@testing-library/react";
 import App from "../components/App";
 import { Provider } from "react-redux";
-import { Router, BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import '@testing-library/jest-dom/extend-expect';
 import { createStore } from "redux";
 import reducer from "../reducers";
 import middleware from "../middleware";
 import { handleInitialData } from "../actions/shared";
-import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils";
-import { getState } from "../utils/api";
 
 const path = "/";
 const match = {

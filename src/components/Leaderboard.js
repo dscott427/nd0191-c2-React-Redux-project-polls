@@ -1,7 +1,4 @@
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
-import { useNavigate, Link } from "react-router-dom";
-
 
 const Leaderboard = (props) => {
 
@@ -20,10 +17,8 @@ const Leaderboard = (props) => {
 
     users.sort(function(b, a){return a.total - b.total});
 
-
-
     return (
-        <div>
+        <div data-testid="leaderboard-component">
             <table>
                 <tbody>
                     <tr key="123">

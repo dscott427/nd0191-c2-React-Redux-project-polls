@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
 import { useState } from "react";
@@ -71,9 +70,5 @@ const QuestionCreate = ({dispatch}) => {
         </div>
     );
 };
-
-// const mapStateToProps = () => ({
-//     loading: authedUser === null,
-// });
 
 export default connect()(QuestionCreate);

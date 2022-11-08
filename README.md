@@ -15,7 +15,7 @@ Functionality:
 Please use the following commands to install, run, and test the project
 * npm install - update npm packages
 * npm start - Run the application
-* npm test - Run the tests
+* npm run test - Run the tests
 
 ## Data
 

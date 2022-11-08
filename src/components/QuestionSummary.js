@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
+import { formatDate } from "../utils/helpers";
 import { useNavigate, Link } from "react-router-dom";
 
 const QuestionSummary = (props, ownProps) => {

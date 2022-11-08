@@ -7,7 +7,6 @@ import Question from "./Question";
 import QuestionCreate from "./QuestionCreate";
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
-import Logout from "./Logout";
 import Nav from "./Nav";
 import { Routes, Route } from "react-router-dom";
 
@@ -41,7 +40,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = ({ authedUser }) => ({
- // loading: authedUser === null,
+ authedUser
 });
 
 export default connect(mapStateToProps)(App);

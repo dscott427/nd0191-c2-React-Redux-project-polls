@@ -1,4 +1,6 @@
 import { _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA.js'
+import '@testing-library/jest-dom/extend-expect';
+
 
 describe('questions', () => {
   it('Add new question and return formatted data', async () => {
@@ -21,9 +23,9 @@ describe('questions', () => {
         authedUser: "tylermcginnis"
 
       });
-   expect(result).toEqual(true);
+    expect(result).toEqual(true);
   });
-  
+
 
   it("Add question fails for missing data", async () => {
 
@@ -61,12 +63,12 @@ describe('questions', () => {
         await _saveQuestionAnswer(
           {
             qid: "xj352vofupe1dqz9emx13r",
-            answer: "optionTwo",    
+            answer: "optionTwo",
           })
       }
       catch (exception) {
         error = exception;
-        expect(error).toEqual("Please provide optionOneText, optionTwoText, and author");
+        expect(error).toEqual("Please provide authedUser, qid, and answer");
       }
     }
 
