@@ -12,8 +12,6 @@ import { handleInitialData } from "../actions/shared";
 import { getSpaceUntilMaxLength } from "@testing-library/user-event/dist/utils";
 import { getState } from "../utils/api";
 
-var multiply = require('../multiply');
-
 const path = "/";
 const match = {
     isExact: true,

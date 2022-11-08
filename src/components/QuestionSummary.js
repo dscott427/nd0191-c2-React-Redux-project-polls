@@ -14,9 +14,6 @@ const QuestionSummary = (props, ownProps) => {
     navigate(`/question/${id}`);
   };
 
-  console.log("avatarUrl: " + props.users[question.author].avatarUrl)
-
-
   return (
     <div className='center' style={{ border: border }}>
       <h3>{question.author}</h3>

@@ -41,7 +41,7 @@ Object {
             </li>
             <li>
               <a
-                href="/question/new"
+                href="/add"
                 style="pointer-events: none;"
               >
                 New
@@ -53,6 +53,13 @@ Object {
               >
                 Login
               </a>
+            </li>
+            <li>
+              <img
+                alt=""
+                class="avatarsmall"
+                src=""
+              />
             </li>
           </ul>
         </nav>
@@ -139,7 +146,7 @@ Object {
           </li>
           <li>
             <a
-              href="/question/new"
+              href="/add"
               style="pointer-events: none;"
             >
               New
@@ -151,6 +158,13 @@ Object {
             >
               Login
             </a>
+          </li>
+          <li>
+            <img
+              alt=""
+              class="avatarsmall"
+              src=""
+            />
           </li>
         </ul>
       </nav>
