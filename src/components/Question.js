@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams, Navigate } from "react-router-dom";
 import { handleAddQuestionAnswer } from "../actions/questions";
 import { handleAddUserAnswer } from "../actions/users";
 import { useEffect } from "react";
@@ -19,9 +19,13 @@ const Question = (props) => {
 
     let navigate = useNavigate();
 
-    useEffect(() => {
+    const location = useLocation();
 
-    }, []);
+    if(!props.question)
+    {
+        console.log("Questions navigating to not found") ;
+        return <Navigate to="/404" replace state={{ path: location.pathname }} />;
+    }
 
     const { dispatch, question, authedUser, users } = props;
 

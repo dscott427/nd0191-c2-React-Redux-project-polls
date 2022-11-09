@@ -11,13 +11,6 @@ import reducer from "../reducers";
 import middleware from "../middleware";
 import { handleInitialData } from "../actions/shared";
 
-const path = "/";
-const match = {
-  isExact: true,
-  path,
-  url: path
-};
-
 const store = createStore(reducer, middleware);
 
 describe('Login', () => {

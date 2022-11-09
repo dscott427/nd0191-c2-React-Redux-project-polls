@@ -1,8 +1,13 @@
 import { connect } from "react-redux";
 import QuestionSummary from "./QuestionSummary";
 import { useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
 const Questions = (props) => {
+
+    const location = useLocation();
+
+    const [questionStatus, setQuestionStatus] = useState("All");
 
     const authedUser = props.authedUser;
     const questionKeys = Object.keys(props.questions);
@@ -11,7 +16,7 @@ const Questions = (props) => {
 
     const border = '1px solid black';
 
-    const [questionStatus, setQuestionStatus] = useState("All");
+
 
     const handleTextUserChange = (e) => {
         setQuestionStatus(e.target.value);
@@ -38,6 +43,8 @@ const Questions = (props) => {
     newQuestions.sort(function (b, a) { return a.timestamp - b.timestamp });
 
     doneQuestions.sort(function (b, a) { return a.timestamp - b.timestamp });
+
+
 
     return (
         <div>
