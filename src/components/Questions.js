@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import QuestionSummary from "./QuestionSummary";
+import { useState } from "react";
 
 const Questions = (props) => {
 
@@ -9,6 +10,16 @@ const Questions = (props) => {
     const newKeys = questionKeys.filter(q => !doneKeys.includes(q));
 
     const border = '1px solid black';
+
+    const [questionStatus, setQuestionStatus] = useState("All");
+
+    const handleTextUserChange = (e) => {
+        setQuestionStatus(e.target.value);
+    };
+
+    const handleFilterClear = () => {
+        setQuestionStatus("");
+    };
 
     const newQuestions = newKeys.map(key => {
         return {
@@ -30,18 +41,34 @@ const Questions = (props) => {
 
     return (
         <div>
-            <div className='center'>
-                <h3 className="center">New Questions</h3>
-                {newQuestions.map((question) => (
-                    <QuestionSummary key={question.id} questionId={question.id} question={props.questions[question.id]} />
-                ))}
+            <div>
+                Filter:
+                <input onClick={handleTextUserChange} type="radio" id="new" name="fav_language" value="New" />
+                <label htmlFor="new">New</label>
+                <input onClick={handleTextUserChange} type="radio" id="done" name="fav_language" value="Done" />
+                <label htmlFor="done">Done</label>
+                <span style={questionStatus !== "All" ? null : { display: "none" }}>
+                    <input onClick={handleTextUserChange} type="radio" id="all" name="fav_language" value="All" />
+                    <label htmlFor="all">All</label>
+                </span>
             </div>
-            <div className='center'>
-                <h3 className="center">Done</h3>
-                {doneQuestions.map((question) => (
-                    <QuestionSummary key={question.id} questionId={question.id} question={props.questions[question.id]} />
-                ))}
-            </div>
+
+            <span style={questionStatus === "New" || questionStatus === "All" ? null : { display: "none" }}>
+                <div className='center'>
+                    <h3 className="center">New Questions</h3>
+                    {newQuestions.map((question) => (
+                        <QuestionSummary key={question.id} questionId={question.id} question={props.questions[question.id]} />
+                    ))}
+                </div>
+            </span>
+            <span style={questionStatus === "Done" || questionStatus === "All" ? null : { display: "none" }}>
+                <div className='center'>
+                    <h3 className="center">Done</h3>
+                    {doneQuestions.map((question) => (
+                        <QuestionSummary key={question.id} questionId={question.id} question={props.questions[question.id]} />
+                    ))}
+                </div>
+            </span>
         </div >
     )
 };

@@ -16,15 +16,15 @@ const Nav = (props) => {
     if (authedUser !== null) {
       dispatch(setAuthedUser(null));
       logout();
-      navigate("/");
+      navigate("/login");
     }
   }
 
   return (
-    <nav className="nav">
+    <nav className="nav" data-testid="nav-component">
       <ul>
         <li>
-          <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/">Home</Link>
+          <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/dashboard">Home</Link>
         </li>
         <li>
           <Link style={authedUser === null ? { pointerEvents: "none" } : null} to="/leaderboard">Leaderboard</Link>
@@ -35,7 +35,7 @@ const Nav = (props) => {
         <li>
           <Link
             onClick={handleLogout}
-            to="/">{
+            to="/login">{
               props.authedUser === null ? 'Login' : 'Logout'}
           </Link>
         </li>

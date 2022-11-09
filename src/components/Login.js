@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { setAuthedUser } from "../actions/authedUser";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -11,7 +11,9 @@ const Login = (props) => {
 
     const { state } = useLocation();
 
-    const { dispatch, users } = props;
+    const { dispatch, users, authedUser } = props;
+
+    console.log("login initial: " + authedUser)
 
     const [textUser, setTextUser] = useState("");
     const [textPassword, setTextPassword] = useState("");
@@ -46,7 +48,6 @@ const Login = (props) => {
         setTextPassword("");
 
     }
-
 
     return (
         <div data-testid="login-component">

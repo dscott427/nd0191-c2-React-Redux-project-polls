@@ -21,11 +21,12 @@ Object {
       >
         <nav
           class="nav"
+          data-testid="nav-component"
         >
           <ul>
             <li>
               <a
-                href="/"
+                href="/dashboard"
                 style="pointer-events: none;"
               >
                 Home
@@ -49,7 +50,7 @@ Object {
             </li>
             <li>
               <a
-                href="/"
+                href="/login"
               >
                 Login
               </a>
@@ -129,11 +130,12 @@ Object {
     >
       <nav
         class="nav"
+        data-testid="nav-component"
       >
         <ul>
           <li>
             <a
-              href="/"
+              href="/dashboard"
               style="pointer-events: none;"
             >
               Home
@@ -157,7 +159,7 @@ Object {
           </li>
           <li>
             <a
-              href="/"
+              href="/login"
             >
               Login
             </a>
